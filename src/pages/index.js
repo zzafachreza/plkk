@@ -9,6 +9,8 @@ import InfoPdf from './InfoPdf';
 import RumahSakit from './RumahSakit';
 import Janji from './Janji';
 import WebInfo from './WebInfo';
+import Riwayat from './Riwayat';
+import Informasi from './Informasi';
 
 
 
@@ -25,6 +27,8 @@ export {
   InfoPdf,
   RumahSakit,
   Janji,
-  WebInfo
+  WebInfo,
+  Riwayat,
+  Informasi
 
 };

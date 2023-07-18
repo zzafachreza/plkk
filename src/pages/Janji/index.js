@@ -17,22 +17,37 @@ import { MyButton, MyCalendar, MyGap, MyInput } from '../../components';
 export default function Janji({ navigation, route }) {
 
     const [kirim, setKirim] = useState({
+        rumah_sakit: route.params.nama_rs,
         nama: '',
         kpj: '',
         telepon: '',
         tanggal: moment().format('YYYY-MM-DD'),
         poli: '',
         dokter: ''
-    })
+    });
+
+    useEffect(() => {
+        getData('user').then(u => {
+            setKirim({
+                ...kirim,
+                fid_user: u.id
+            })
+        })
+    }, []);
 
     const sendServer = () => {
 
+        console.log(kirim);
+        axios.post(apiURL + 'janji_add', kirim).then(res => {
+            console.log(res.data);
+            let pesan = `Hallo *${item.nama_rs}*%0A%0ASaya peserta Bpjs Ketenagakerjaan ingin registrasi, dengan data sbb:%0A%0A- Nama  : *${kirim.nama}*%0A- No KPJ : *${kirim.kpj}*%0A- No tlp : *${kirim.telepon}*%0A- Tgl Kunjungan : *${moment(kirim.tanggal).format('dddd, DD MMMM YYYY')}*%0A- Poli : *${kirim.poli}*%0A- Dokter : *${kirim.dokter}*%0A`;
+            Linking.openURL('https://wa.me/' + item.telepon_rs + '?text=' + pesan);
+            navigation.goBack();
+        })
 
-        let pesan = `Hallo *${item.nama_rs}*%0A%0ASaya peserta Bpjs Ketenagakerjaan ingin registrasi, dengan data sbb:%0A%0A- Nama  : *${kirim.nama}*%0A- No KPJ : *${kirim.kpj}*%0A- No tlp : *${kirim.telepon}*%0A- Tgl Kunjungan : *${moment(kirim.tanggal).format('dddd, DD MMMM YYYY')}*%0A- Poli : *${kirim.poli}*%0A- Dokter : *${kirim.dokter}*%0A`;
 
-        console.log(pesan);
 
-        Linking.openURL('https://wa.me/' + item.telepon_rs + '?text=' + pesan);
+
         // Linking.openURL('https://wa.me/6289653763986' + '?text=' + pesan);
     }
 

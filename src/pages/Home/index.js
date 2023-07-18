@@ -123,7 +123,7 @@ export default function Home({ navigation, route }) {
           padding: 5,
         }}>
 
-          <TouchableNativeFeedback onPress={() => navigation.navigate('WebInfo', {
+          <TouchableNativeFeedback onPress={() => navigation.navigate('Informasi', {
             web: comp.website
           })}>
             <View style={{
@@ -246,7 +246,7 @@ export default function Home({ navigation, route }) {
 
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('RumahSakit')} style={{
+        <TouchableOpacity onPress={() => navigation.navigate('Riwayat')} style={{
           padding: 10,
         }}>
           <Icon type='ionicon' name='calendar-outline' color={colors.white} size={20} />
@@ -254,7 +254,7 @@ export default function Home({ navigation, route }) {
             fontFamily: fonts.secondary[600],
             fontSize: 12,
             color: colors.white
-          }}>Janji Temu</Text>
+          }}>History Janji Temu</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate('Account')} style={{

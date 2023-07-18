@@ -13,6 +13,8 @@ import {
   RumahSakit,
   Janji,
   WebInfo,
+  Riwayat,
+  Informasi,
 
 
 
@@ -30,6 +32,22 @@ export default function Router() {
       <Stack.Screen
         name="Splash"
         component={Splash}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="Riwayat"
+        component={Riwayat}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="Informasi"
+        component={Informasi}
         options={{
           headerShown: false,
         }}
